@@ -1,0 +1,23 @@
+---
+- hosts: localhost
+  defaults: 
+     nagios-conf-dir: /usr/local/nagios/etc
+  tasks:
+   - name: update nagios.cfg file 
+     replace:
+         dest: /home/centos/nagios_test.cfg
+         regexp: 'cfg_file=/usr/local/nagios/etc/objects/localhost.cfg'
+         replace: 'cfg_file=/usr/local/nagios/etc/objects/nagios-server.cfg'
+
+   - name: add def for nrpe.cfg
+     lineinfile:
+         dest: /home/centos/nagios_test.cfg
+         insertafter: 'nagios-server.cfg'
+         line: 'cfg_file=/usr/local/nagios/etc/objects/check_nrpe.cfg'
+       
+## up to above it is working fine 
+#
+   - name: change interval time for nagios service check
+     replace:
+         dest: template.cfg
+         regexp: ':' 

@@ -1,0 +1,15 @@
+---
+- hosts: kafka-setup
+  vars: 
+    server1: 192.168.77.8 
+    server2: 192.168.77.11 
+    server3: 192.168.77.13 
+  tasks: 
+    - name: Checking IP Addresses 
+      debug: 
+        msg: "Hello World  server1 ..!"
+      when: ansible_default_ipv4.address in server1
+
+  
+  
+

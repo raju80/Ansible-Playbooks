@@ -1,0 +1,8 @@
+---
+- hosts: localhost 
+  tasks:
+   - name: replacing the check_total_procs command line
+     replace:
+        dest: /home/centos/commands.cfg 
+        regexp: 'command_line    $USER1$/check_procs -w $ARG1$ -c $ARG2$ -s $ARG3$'
+        replace: 'command_line    $USER1$/check_procs -w $ARG1$ -c $ARG2$'

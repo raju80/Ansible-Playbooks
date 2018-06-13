@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  tasks: 
+    - name: removing ~ files 
+      #shell: rm *~
+      file:
+        src: *~
+        state: absent
+      ignore_errors: yes 

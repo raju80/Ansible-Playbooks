@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  tasks: 
+    - name: updating
+      lineinfile:
+          dest: /home/centos/template.cfg
+          regexp: 'local-service'
+          insertbefore: '^retry_check_interval' 
+          line: 'normal_check_interval          1'
